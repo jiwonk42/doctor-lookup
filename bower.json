@@ -1,7 +1,10 @@
 {
   "name": "doctor-lookup",
   "description": "",
-  "main": "gulpfile.js",
+  "main": "index.js",
+  "authors": [
+    "Jiwon"
+  ],
   "license": "ISC",
   "homepage": "",
   "ignore": [
