@@ -1,17 +1,15 @@
 var Doctor = require('./../js/doctor.js').doctorModule;
-var displayDoctors = function(result) {
-  for (var i = 0; i < result.data.length; i++) {
-    $('ul#doctor-list').append("<li>" + result.data[i].profile["first_name"] + " " + result.data[i].profile["last_name"]+ "</li>");
-    console.log(result.data[i].profile);
-  }
+var displayDoctors = function(firstName, lastName, title, specialty, description) {
+  $('ul#doctor-list').append("<li>" + firstName + " " + lastName + " " + title + " (Speciality: " + specialty + "; " + description + ")</li>");
 }
 
 $(document).ready(function() {
   var currentDoctorObject = new Doctor();
   $('#doctor-form').click(function() {
 
-    var userInput = $('input#medical-issue').val();
-    $('#userInput').val("");
+    event.preventDefault();
+    var userInput = $('input#medical-issue').val().toLowerCase();
     currentDoctorObject.getDoctors(userInput, displayDoctors);
+    $('#userInput').val("");
   });
 });
