@@ -1,6 +1,9 @@
 var Doctor = require('./../js/doctor.js').doctorModule;
 var displayDoctors = function(result) {
-  $('ul#doctor-list').append("<li>" + result[0] + "</li>");
+  for (var i = 0; i < result.data.length; i++) {
+    $('ul#doctor-list').append("<li>" + result.data[i].profile["first_name"] + " " + result.data[i].profile["last_name"]+ "</li>");
+    console.log(result.data[i].profile);
+  }
 }
 
 $(document).ready(function() {
@@ -9,7 +12,6 @@ $(document).ready(function() {
 
     var userInput = $('input#medical-issue').val();
     $('#userInput').val("");
-    console.log(userInput);
     currentDoctorObject.getDoctors(userInput, displayDoctors);
   });
 });
